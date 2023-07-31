@@ -1,0 +1,177 @@
+G:\>conda create -n mlc-chat-venv -c mlc-ai -c conda-forge mlc-chat-cli-nightly
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.7.1
+  latest version: 23.7.2
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=23.7.2
+
+
+
+## Package Plan ##
+
+  environment location: G:\anaconda3\envs\mlc-chat-venv
+
+  added / updated specs:
+    - mlc-chat-cli-nightly
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    libvulkan-loader-1.3.250.0 |       hdfa14b1_0         138 KB  conda-forge
+    mlc-chat-cli-nightly-0.1.dev299|299_gf70f746_h1234567_0         5.0 MB  mlc-ai
+    ucrt-10.0.22621.0          |       h57928b3_0         1.2 MB  conda-forge
+    vc-14.3                    |      h64f974e_17          17 KB  conda-forge
+    vc14_runtime-14.36.32532   |      hfdfe4a8_17         723 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:         7.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  libvulkan-loader   conda-forge/win-64::libvulkan-loader-1.3.250.0-hdfa14b1_0
+  mlc-chat-cli-nigh~ mlc-ai/win-64::mlc-chat-cli-nightly-0.1.dev299-299_gf70f746_h1234567_0
+  ucrt               conda-forge/win-64::ucrt-10.0.22621.0-h57928b3_0
+  vc                 conda-forge/win-64::vc-14.3-h64f974e_17
+  vc14_runtime       conda-forge/win-64::vc14_runtime-14.36.32532-hfdfe4a8_17
+
+
+Proceed ([y]/n)? Y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate mlc-chat-venv
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+G:\>conda activate mlc-chat-venv
+
+(mlc-chat-venv) G:\>conda install git git-lfs
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.7.1
+  latest version: 23.7.2
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=23.7.2
+
+
+
+## Package Plan ##
+
+  environment location: G:\anaconda3\envs\mlc-chat-venv
+
+  added / updated specs:
+    - git
+    - git-lfs
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    git-2.40.1                 |       haa95532_1        69.2 MB
+    git-lfs-2.13.3             |       haa95532_0         3.0 MB
+    ------------------------------------------------------------
+                                           Total:        72.2 MB
+
+The following NEW packages will be INSTALLED:
+
+  git                pkgs/main/win-64::git-2.40.1-haa95532_1
+  git-lfs            pkgs/main/win-64::git-lfs-2.13.3-haa95532_0
+
+
+Proceed ([y]/n)? Y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+(mlc-chat-venv) G:\>git lfs install
+Git LFS initialized.
+
+(mlc-chat-venv) G:\>mkdir -p G:\prebuilt
+
+(mlc-chat-venv) G:\>git clone https://github.com/mlc-ai/binary-mlc-llm-libs.git D:\prebuilt\lib
+Cloning into 'D:\prebuilt\lib'...
+remote: Enumerating objects: 191, done.
+remote: Counting objects: 100% (56/56), done.
+remote: Compressing objects: 100% (35/35), done.
+remote: Total 191 (delta 36), reused 39 (delta 21), pack-reused 135
+Receiving objects: 100% (191/191), 46.08 MiB | 5.27 MiB/s, done.
+
+Resolving deltas: 100% (129/129), done.
+Updating files: 100% (44/44), done.
+
+(mlc-chat-venv) G:\>cd prebuilt
+
+(mlc-chat-venv) G:\prebuilt>git clone https://huggingface.co/mlc-ai/mlc-chat-vicuna-v1-7b-q3f16_0
+Cloning into 'mlc-chat-vicuna-v1-7b-q3f16_0'...
+remote: Enumerating objects: 196, done.
+remote: Counting objects: 100% (61/61), done.
+remote: Compressing objects: 100% (57/57), done.
+remote: Total 196 (delta 3), reused 61 (delta 3), pack-reused 135
+Receiving objects: 100% (196/196), 40.90 KiB | 2.73 MiB/s, done.
+Resolving deltas: 100% (3/3), done.
+Filtering content: 100% (131/131), 2.84 GiB | 5.35 MiB/s, done.
+
+(mlc-chat-venv) G:\prebuilt>mlc_chat_cli --local-id G:\prebuilt\mlc-chat-vicuna-v1-7b-q3f16_0 --artifact-path G:\
+Use MLC config: "G:\\prebuilt\\mlc-chat-vicuna-v1-7b-q3f16_0\\mlc-chat-config.json"
+Use model weights: "G:\\prebuilt\\mlc-chat-vicuna-v1-7b-q3f16_0\\ndarray-cache.json"
+Use model library: "G:\\prebuilt\\lib\\vicuna-v1-7b-q3f16_0-vulkan.dll"
+You can use the following special commands:
+  /help               print the special commands
+  /exit               quit the cli
+  /stats              print out the latest stats (token/sec)
+  /reset              restart a fresh chat
+  /reload [local_id]  reload model `local_id` from disk, or reload the current model if `local_id` is not specified
+
+Loading model...
+Loading finished
+Running system prompts...
+System prompts finished
+USER: xsslong
+ASSISTANT: I'm sorry, but I'm not sure what you mean by "xsslong". Can you please provide more context or clarify your request?
+USER: who are you?
+ASSISTANT: I am an artificial intelligence designed to assist with answering questions and providing information on a wide range of topics. I don't have a specific identity or personality as I'm not a "who" but rather a "what".
+USER: 你知道四大名著吗？
+ASSISTANT: I'm sorry
+USER: Can you understand Chinese?
+ASSISTANT: Yes, I can understand and generate Chinese text. Please keep in mind that as a language model AI I don't have emotions or personal feelings. My main function is to assist with generating and understanding text in different languages including Chinese.
+USER: 你知道四大名著吗？
+ASSISTANT: I apologize for the confusion. The text you provided is in Chinese characters, but I'm not sure what the text means or what you would like me to do with it. Could you please provide more context or clarify your request?
+USER: 你是谁？
+ASSISTANT: I'm sorry but I'm not sure what you mean by "锟斤拷锟斤拷锟谁锟斤拷". Could you please provide more context or clarify your request?
+USER: exit
